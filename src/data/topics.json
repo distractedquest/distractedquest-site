@@ -1,33 +1,292 @@
 {
   "_readme": "Quest topics. Home 'Pick a quest' shows the top `questCards.max` topics by video count (stored tags + keyword matches on title/description). With no videos it shows `questCards.fallback`. Add a topic by adding an entry here; `icon` must exist in src/components/Icon.astro.",
-  "questCards": { "max": 4, "min": 3, "fallback": ["fishing", "kayaks", "homelab"] },
+  "questCards": {
+    "max": 4,
+    "min": 3,
+    "fallback": [
+      "fishing",
+      "kayaks",
+      "homelab"
+    ]
+  },
   "topics": [
-    { "id": "fishing", "label": "Fishing", "icon": "fish", "color": ["#1f6f5c", "#0d3b31"],
+    {
+      "id": "fishing",
+      "label": "Fishing",
+      "icon": "fish",
+      "color": [
+        "#0b6e78",
+        "#04363d"
+      ],
       "blurb": "Bass, sunfish and whatever bites, mostly from a kayak.",
-      "keywords": ["fish", "fishing", "bass", "sunfish", "crappie", "catfish", "perch", "bluegill", "trout", "redfish", "drum", "lure", "bait", "hook", "hooked", "catch", "caught", "angler", "texas rig", "ned rig", "jig", "crankbait", "swimbait", "worm", "paddle tail", "topwater", "spinnerbait", "rod", "reel", "fish finder"] },
-    { "id": "kayaks", "label": "Kayaks", "icon": "kayak", "color": ["#e8833a", "#a6461d"],
+      "keywords": [
+        "fish",
+        "fishing",
+        "bass",
+        "sunfish",
+        "crappie",
+        "catfish",
+        "perch",
+        "bluegill",
+        "trout",
+        "redfish",
+        "drum",
+        "lure",
+        "bait",
+        "hook",
+        "hooked",
+        "catch",
+        "caught",
+        "angler",
+        "texas rig",
+        "ned rig",
+        "jig",
+        "crankbait",
+        "swimbait",
+        "worm",
+        "paddle tail",
+        "topwater",
+        "spinnerbait",
+        "rod",
+        "reel",
+        "fish finder"
+      ]
+    },
+    {
+      "id": "kayaks",
+      "label": "Kayaks",
+      "icon": "kayak",
+      "color": [
+        "#b4511a",
+        "#5e2406"
+      ],
       "blurb": "Creek runs, lake mornings, rigging and launches.",
-      "keywords": ["kayak", "kayaking", "yak", "paddle", "paddling", "canoe", "creek", "river run", "launch", "on the water", "pedal drive", "sit on top"] },
-    { "id": "homelab", "label": "Homelab / IT", "icon": "server", "color": ["#36406e", "#151a33"],
+      "keywords": [
+        "kayak",
+        "kayaking",
+        "yak",
+        "paddle",
+        "paddling",
+        "canoe",
+        "creek",
+        "river run",
+        "launch",
+        "on the water",
+        "pedal drive",
+        "sit on top"
+      ]
+    },
+    {
+      "id": "homelab",
+      "label": "Homelab / IT",
+      "icon": "server",
+      "color": [
+        "#0a62bd",
+        "#04224f"
+      ],
       "blurb": "ESXi, self-hosting, tunnels and the rack in the garage.",
-      "keywords": ["homelab", "home lab", "esxi", "vmware", "proxmox", "server", "rack", "docker", "container", "kubernetes", "nas", "truenas", "unraid", "self-host", "self host", "selfhost", "cloudflare", "tunnel", "virtual machine", "network", "unifi", "pfsense", "opnsense", "plex", "jellyfin", "postiz", "linux", "raspberry pi"] },
-    { "id": "firearms", "label": "Firearms", "icon": "target", "color": ["#5b5f45", "#2b2d1f"],
+      "keywords": [
+        "homelab",
+        "home lab",
+        "esxi",
+        "vmware",
+        "proxmox",
+        "server",
+        "rack",
+        "docker",
+        "container",
+        "kubernetes",
+        "nas",
+        "truenas",
+        "unraid",
+        "self-host",
+        "self host",
+        "selfhost",
+        "cloudflare",
+        "tunnel",
+        "virtual machine",
+        "network",
+        "unifi",
+        "pfsense",
+        "opnsense",
+        "plex",
+        "jellyfin",
+        "postiz",
+        "linux",
+        "raspberry pi"
+      ]
+    },
+    {
+      "id": "firearms",
+      "label": "Firearms",
+      "icon": "target",
+      "color": [
+        "#4d5a3a",
+        "#1d2414"
+      ],
       "blurb": "Range days, gear, suppressors and safe, responsible shooting.",
-      "keywords": ["firearm", "firearms", "gun", "pistol", "rifle", "shotgun", "range day", "shooting range", "suppressor", "silencer", "ammo", "ammunition", "holster", "optic", "red dot", "mantisx", "9mm", "ar-15", "ar15", "concealed carry", "edc"] },
-    { "id": "bbq", "label": "BBQ", "icon": "flame", "color": ["#b23a24", "#5e1a10"],
+      "keywords": [
+        "firearm",
+        "firearms",
+        "gun",
+        "pistol",
+        "rifle",
+        "shotgun",
+        "range day",
+        "shooting range",
+        "suppressor",
+        "silencer",
+        "ammo",
+        "ammunition",
+        "holster",
+        "optic",
+        "red dot",
+        "mantisx",
+        "9mm",
+        "ar-15",
+        "ar15",
+        "concealed carry",
+        "edc"
+      ]
+    },
+    {
+      "id": "bbq",
+      "label": "BBQ",
+      "icon": "flame",
+      "color": [
+        "#a8301e",
+        "#4a1008"
+      ],
       "blurb": "Brisket, ribs, low and slow, Texas style.",
-      "keywords": ["bbq", "barbecue", "barbeque", "brisket", "smoker", "smoked", "smoking meat", "ribs", "pulled pork", "pit", "offset", "pellet grill", "traeger", "grill", "grilling", "rub", "low and slow"] },
-    { "id": "gaming", "label": "Gaming", "icon": "gamepad", "color": ["#6a3fb5", "#2c1758"],
+      "keywords": [
+        "bbq",
+        "barbecue",
+        "barbeque",
+        "brisket",
+        "smoker",
+        "smoked",
+        "smoking meat",
+        "ribs",
+        "pulled pork",
+        "pit",
+        "offset",
+        "pellet grill",
+        "traeger",
+        "grill",
+        "grilling",
+        "rub",
+        "low and slow"
+      ]
+    },
+    {
+      "id": "gaming",
+      "label": "Gaming",
+      "icon": "gamepad",
+      "color": [
+        "#5a3fc0",
+        "#1e1256"
+      ],
       "blurb": "Side quests of the digital kind.",
-      "keywords": ["gaming", "gamer", "video game", "playthrough", "gameplay", "xbox", "playstation", "ps5", "nintendo", "switch 2", "steam deck", "steam", "pc build", "rpg", "fps", "let's play"] },
-    { "id": "cigars", "label": "Pipes & Cigars", "icon": "smoke", "color": ["#7a4a2a", "#3a2213"],
+      "keywords": [
+        "gaming",
+        "gamer",
+        "video game",
+        "playthrough",
+        "gameplay",
+        "xbox",
+        "playstation",
+        "ps5",
+        "nintendo",
+        "switch 2",
+        "steam deck",
+        "steam",
+        "pc build",
+        "rpg",
+        "fps",
+        "let's play"
+      ]
+    },
+    {
+      "id": "cigars",
+      "label": "Pipes & Cigars",
+      "icon": "smoke",
+      "color": [
+        "#7f4e2c",
+        "#35200f"
+      ],
       "blurb": "Slow smokes, pipe tobacco and good conversation.",
-      "keywords": ["cigar", "cigars", "pipe tobacco", "tobacco pipe", "pipe smoking", "humidor", "maduro", "connecticut wrapper", "cohiba", "padron", "briar", "cutter", "lounge"] },
-    { "id": "autonomous", "label": "Autonomous Tech", "icon": "robot", "color": ["#0f6f8a", "#073646"],
+      "keywords": [
+        "cigar",
+        "cigars",
+        "pipe tobacco",
+        "tobacco pipe",
+        "pipe smoking",
+        "humidor",
+        "maduro",
+        "connecticut wrapper",
+        "cohiba",
+        "padron",
+        "briar",
+        "cutter",
+        "lounge"
+      ]
+    },
+    {
+      "id": "autonomous",
+      "label": "Autonomous Tech",
+      "icon": "robot",
+      "color": [
+        "#08708f",
+        "#032f42"
+      ],
       "blurb": "Self-driving cars, robots, drones and AI that does the work.",
-      "keywords": ["autonomous", "self-driving", "self driving", "fsd", "full self-driving", "robotaxi", "waymo", "tesla", "optimus", "robot", "robotics", "drone", "dji", "autopilot", "ai agent", "lidar"] },
-    { "id": "space", "label": "Space", "icon": "rocket", "color": ["#1b2a5a", "#070b1f"],
+      "keywords": [
+        "autonomous",
+        "self-driving",
+        "self driving",
+        "fsd",
+        "full self-driving",
+        "robotaxi",
+        "waymo",
+        "tesla",
+        "optimus",
+        "robot",
+        "robotics",
+        "drone",
+        "dji",
+        "autopilot",
+        "ai agent",
+        "lidar"
+      ]
+    },
+    {
+      "id": "space",
+      "label": "Space",
+      "icon": "rocket",
+      "color": [
+        "#25317d",
+        "#000b22"
+      ],
       "blurb": "Rocket launches, Starship and looking up.",
-      "keywords": ["space", "rocket", "launch window", "starship", "spacex", "falcon 9", "falcon heavy", "nasa", "orbit", "orbital", "booster", "starbase", "astronomy", "telescope", "iss", "artemis", "liftoff"] }
+      "keywords": [
+        "space",
+        "rocket",
+        "launch window",
+        "starship",
+        "spacex",
+        "falcon 9",
+        "falcon heavy",
+        "nasa",
+        "orbit",
+        "orbital",
+        "booster",
+        "starbase",
+        "astronomy",
+        "telescope",
+        "iss",
+        "artemis",
+        "liftoff"
+      ]
+    }
   ]
 }

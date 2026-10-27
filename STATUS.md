@@ -40,7 +40,8 @@ _Last updated: Mon Oct 26, 2026, ~10:15 PM CT. Built on the Locutus box; nothing
    tiktok.com/@distractedquest, x.com/distractedquest, facebook.com/profile.php?id=61595684019632 (Dan's Facebook Page, confirmed by Dan Oct 27; Hoshi to verify).
    They're edited in `src/data/site.json`.
 3. **About text: DONE** (drafted by Hoshi, approved by Dan Oct 27). Still placeholder: About photo, the Contact media-kit numbers, home photo strip, hero art (an illustrated sunrise
-   until Chopper supplies a hero photo or clip), logo (placeholder badge until the channel logo is added).
+   until Chopper supplies a hero photo or clip).
+   **Decided Oct 27:** palette = "quest" (logo-matched navy #000b22 / blue #0a84f0 / sky #58aaed) and heroVariant = "logo" (X banner art in the hero, channel badge in header, favicon and OG image). Switches live in `src/data/site.json`; source logos in /workspace/distractedquest-assets (SOURCES.md).
 4. **GitHub repo: create it PUBLIC** (Dan decided Oct 27).
 5. "Cigars / side quests" content currently tags as Fishing/Kayaks only. A 4th topic could be added later if wanted.
 

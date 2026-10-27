@@ -34,7 +34,7 @@ const orgLd = {
   '@type': 'Organization',
   name: site.name,
   url: Astro.site?.href,
-  logo: new URL('/favicon.svg', Astro.site).href,
+  logo: new URL('/icon-512.png', Astro.site).href,
   email: site.email,
   sameAs: site.socials.map((s) => s.url),
 };
@@ -49,10 +49,11 @@ const ld = [orgLd, ...(Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [])]
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical.href} />
     {noindex && <meta name="robots" content="noindex" />}
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-48.png" type="image/png" sizes="48x48" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="sitemap" href="/sitemap-index.xml" />
-    <meta name="theme-color" content="#1f6f5c" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#0f1513" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#000b22" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#000b22" media="(prefers-color-scheme: dark)" />
     <meta name="color-scheme" content="light dark" />
 
     <!-- Open Graph / Facebook -->
