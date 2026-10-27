@@ -1,0 +1,7 @@
+# Common variations of the legal URLs used in Meta / TikTok / Google app settings.
+/privacy-policy        /privacy  301
+/privacy-policy.html   /privacy  301
+/terms-of-service      /terms    301
+/terms-of-service.html /terms    301
+/tos                   /terms    301
+/home                  /         301

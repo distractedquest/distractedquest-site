@@ -1,0 +1,36 @@
+---
+// Illustrated sunrise-over-the-lake backdrop. Replace with Chopper's hero photo/clip when available:
+// put it in src/assets/hero.jpg and swap this for <Image src={hero} ... /> in index.astro.
+---
+<div class="hero-art" aria-hidden="true">
+  <svg viewBox="0 0 1440 720" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#173b46"/><stop offset=".45" stop-color="#b9643a"/><stop offset=".62" stop-color="#f2a65e"/><stop offset=".63" stop-color="#2a6f66"/><stop offset="1" stop-color="#0c2a27"/>
+      </linearGradient>
+      <radialGradient id="sun" cx=".62" cy=".6" r=".28">
+        <stop offset="0" stop-color="#ffe6b8"/><stop offset=".25" stop-color="#ffd08a" stop-opacity=".9"/><stop offset="1" stop-color="#ffd08a" stop-opacity="0"/>
+      </radialGradient>
+      <linearGradient id="shade" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#06120f" stop-opacity=".7"/><stop offset=".6" stop-color="#06120f" stop-opacity=".1"/><stop offset="1" stop-color="#06120f" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <rect width="1440" height="720" fill="url(#sky)"/>
+    <rect width="1440" height="720" fill="url(#sun)"/>
+    <circle cx="893" cy="446" r="58" fill="#ffe2ad"/>
+    <path d="M0 430 L120 392 L230 418 L360 360 L470 404 L600 372 L720 410 L820 388 L960 420 L1080 380 L1210 412 L1330 376 L1440 400 V455 H0Z" fill="#20433d"/>
+    <path d="M0 448 C200 430 330 440 470 436 S760 428 900 440 1240 432 1440 440 V456 H0Z" fill="#163430"/>
+    <g stroke="#ffe2ad" stroke-linecap="round" opacity=".55">
+      <path d="M840 480h110" stroke-width="5"/><path d="M820 505h150" stroke-width="4" opacity=".7"/><path d="M860 532h80" stroke-width="3" opacity=".6"/><path d="M800 565h190" stroke-width="2" opacity=".4"/>
+    </g>
+    <g transform="translate(1040 560)">
+      <path d="M-120 0 C-60 18 60 18 120 0 C60 -10 -60 -10 -120 0Z" fill="#0b1d1a"/>
+      <circle cx="0" cy="-26" r="9" fill="#0b1d1a"/>
+      <path d="M-6 -18 L6 -18 L10 -4 L-10 -4Z" fill="#0b1d1a"/>
+      <path d="M-70 -60 L70 30" stroke="#0b1d1a" stroke-width="4" stroke-linecap="round"/>
+      <path d="M10 -14 L120 -130" stroke="#0b1d1a" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M120 -130 Q150 -40 160 40" stroke="#0b1d1a" stroke-width="1" fill="none" opacity=".7"/>
+    </g>
+    <rect width="1440" height="720" fill="url(#shade)"/>
+  </svg>
+</div>

@@ -1,0 +1,25 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: npm
+      - run: npm ci
+      - run: npm run check
+      - run: npm run build
+      - name: Legal pages exist at their published paths
+        run: |
+          test -f dist/privacy.html && grep -q "Privacy Policy" dist/privacy.html
+          test -f dist/terms.html && grep -q "Terms of Service" dist/terms.html
+          test -f dist/sitemap-index.xml

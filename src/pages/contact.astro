@@ -1,0 +1,22 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import site from '../data/site.json';
+---
+<Base title="Contact" description="Business inquiries, collaborations and sponsorships for Distracted Quest.">
+  <div class="wrap page prose">
+    <div class="eyebrow">Contact</div>
+    <h1>Work with Distracted Quest</h1>
+    <p>For brand partnerships, gear reviews, collaborations or media requests, email me directly. I usually reply within a few days.</p>
+    <p><a class="btn btn-primary" href={`mailto:${site.email}?subject=Distracted%20Quest%20inquiry`}><Icon name="mail" /> {site.email}</a></p>
+    <h2>Media kit</h2>
+    <!-- PLACEHOLDER: audience numbers and past collaborations to be filled in once the channel has stats (week 2). -->
+    <ul>
+      <li><strong>Topics:</strong> kayak fishing, kayaking, homelab / self-hosting, outdoor side quests</li>
+      <li><strong>Based in:</strong> San Antonio, Texas</li>
+      <li><strong>Platforms:</strong> {site.socials.map((s) => s.label).join(', ')}</li>
+      <li><strong>Audience &amp; past collabs:</strong> coming soon</li>
+    </ul>
+    <p class="muted">Please include your brand, what you have in mind, timing and budget. No form, no tracking: it's just email.</p>
+  </div>
+</Base>

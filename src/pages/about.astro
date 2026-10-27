@@ -1,0 +1,19 @@
+---
+import Base from '../layouts/Base.astro';
+import site from '../data/site.json';
+---
+<Base title="About" description="The story behind Distracted Quest: fishing, kayaks, the oil patch and a homelab, from San Antonio, Texas.">
+  <div class="wrap page prose">
+    <div class="eyebrow">About</div>
+    <h1>Hi, I'm Dan.</h1>
+    <!-- PLACEHOLDER COPY: Dan / Hoshi to replace with the real story and a photo (src/assets/about.jpg). -->
+    <p>Distracted Quest is what happens when the main quest is fishing and every side quest gets a turn: kayak mornings on Texas lakes and creeks, a cigar on the water, life in the Permian Basin oil patch, and the homelab humming in the garage.</p>
+    <p>Most videos are filmed from a kayak around San Antonio. Expect honest trips (including the ones where the fish win), simple rigs that work, and the occasional deep dive into self-hosting and home servers.</p>
+    <h2>What you'll find here</h2>
+    <ul>
+      {site.topics.map((t) => <li><a href={`/videos?topic=${t.id}`}><strong>{t.label}</strong></a>: {t.blurb}</li>)}
+    </ul>
+    <h2>Follow along</h2>
+    <p>{site.socials.map((s, i) => <>{i > 0 && ' · '}<a href={s.url} rel="me noopener" target="_blank">{s.label}</a></>)}</p>
+  </div>
+</Base>
