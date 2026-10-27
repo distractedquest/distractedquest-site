@@ -37,11 +37,11 @@ _Last updated: Mon Oct 26, 2026, ~10:15 PM CT. Built on the Locutus box; nothing
    (Postiz) for Wed Oct 28. The next 6-hourly run after they go public will add them automatically. (YouTube's feed is also a bit flaky,
    so the script retries and treats 404/5xx as "no change".)
 2. **Social URLs to confirm** (assumed from the "@distractedquest everywhere" line on Hoshi's home page): instagram.com/distractedquest,
-   tiktok.com/@distractedquest, x.com/distractedquest, **facebook.com/distractedquest** (the Facebook Page URL is the least certain).
+   tiktok.com/@distractedquest, x.com/distractedquest, facebook.com/profile.php?id=61595684019632 (Dan's Facebook Page, confirmed by Dan Oct 27; Hoshi to verify).
    They're edited in `src/data/site.json`.
-3. **Placeholder copy:** About ("Hi, I'm Dan…"), the Contact media-kit numbers, home photo strip, hero art (an illustrated sunrise
+3. **About text is being drafted by Hoshi for Dan's review/approval; the placeholder stays until approved.** Other placeholder copy: About ("Hi, I'm Dan…"), the Contact media-kit numbers, home photo strip, hero art (an illustrated sunrise
    until Chopper supplies a hero photo or clip), logo (placeholder badge until the channel logo is added).
-4. Public or private GitHub repo? Either works with Cloudflare. Suggest **public** (nothing secret in it, and unlimited free Actions minutes).
+4. **GitHub repo: create it PUBLIC** (Dan decided Oct 27).
 5. "Cigars / side quests" content currently tags as Fishing/Kayaks only. A 4th topic could be added later if wanted.
 
 ## Week 2+ notes

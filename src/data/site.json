@@ -1,14 +1,14 @@
 {
   "name": "Distracted Quest",
-  "tagline": "Fishing, kayaks and homelab side quests from San Antonio, Texas.",
-  "description": "Fishing, kayaking, life in the Permian Basin oil patch, and homelab projects, from San Antonio, Texas.",
+  "tagline": "Living life to the fullest, and getting distracted by fishing, kayaks and homelab side quests.",
+  "description": "Main quest: life. Side quests: fishing, kayaking, the Permian Basin oil patch and homelab projects, from San Antonio, Texas.",
   "email": "distractedquest@gmail.com",
   "youtubeChannelId": "UCPAbQ9ezojvxz4BNbjARQUQ",
   "socials": [
     { "id": "youtube", "label": "YouTube", "handle": "@distractedquest", "url": "https://www.youtube.com/@distractedquest" },
     { "id": "instagram", "label": "Instagram", "handle": "@distractedquest", "url": "https://www.instagram.com/distractedquest" },
     { "id": "tiktok", "label": "TikTok", "handle": "@distractedquest", "url": "https://www.tiktok.com/@distractedquest" },
-    { "id": "facebook", "label": "Facebook", "handle": "Distracted Quest", "url": "https://www.facebook.com/distractedquest" },
+    { "id": "facebook", "label": "Facebook", "handle": "Distracted Quest", "url": "https://www.facebook.com/profile.php?id=61595684019632" },
     { "id": "x", "label": "X", "handle": "@distractedquest", "url": "https://x.com/distractedquest" }
   ],
   "topics": [
