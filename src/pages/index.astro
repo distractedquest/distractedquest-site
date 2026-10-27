@@ -1,0 +1,79 @@
+---
+import Base from '../layouts/Base.astro';
+import HeroArt from '../components/HeroArt.astro';
+import VideoCard from '../components/VideoCard.astro';
+import Icon from '../components/Icon.astro';
+import site from '../data/site.json';
+import { allVideos, longVideos, shorts } from '../lib/videos';
+const latest = longVideos.slice(0, 6);
+const latestShorts = shorts.slice(0, 4);
+const yt = site.socials.find((s) => s.id === 'youtube')!;
+import { questTopics } from '../lib/topics';
+// Hero switch: site.json `heroVariant` (art | logo); DQ_HERO env overrides for previews.
+const heroVariant = process.env.DQ_HERO || (site as any).heroVariant || 'art';
+const webSiteLd = { '@context': 'https://schema.org', '@type': 'WebSite', name: site.name, url: 'https://distractedquest.com/' };
+---
+<Base jsonLd={webSiteLd}>
+  <section class:list={['hero', { 'hero-logo': heroVariant === 'logo' }]}>
+    {heroVariant === 'logo'
+      ? <img class="hero-banner" src="/brand/banner.jpg" width="1500" height="500" alt="Distracted Quest" fetchpriority="high" />
+      : <HeroArt />}
+    <div class="wrap">
+      <div class="eyebrow" style="color:var(--sunrise-soft)">San Antonio, Texas</div>
+      <h1>Main Quest: Life, Side Quest: Everything Else</h1>
+      <p class="tagline">{site.tagline}</p>
+      <p class="kicker">{site.kicker}</p>
+      <div class="actions">
+        <a class="btn btn-primary" href={`${yt.url}?sub_confirmation=1`} rel="noopener" target="_blank"><Icon name="youtube" /> Subscribe on YouTube</a>
+        <a class="btn btn-ghost" href="/links">Follow everywhere</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="block wrap">
+    <div class="section-head">
+      <h2>Latest videos</h2>
+      <a href="/videos">See all →</a>
+    </div>
+    {allVideos.length ? (
+      <div class="grid">{latest.map((v, i) => <VideoCard video={v} eager={i < 2} />)}</div>
+    ) : (
+      <div class="empty"><strong>First videos are on the way.</strong>New uploads show up here automatically. <a href={yt.url} rel="noopener" target="_blank">Subscribe on YouTube</a> so you don't miss them.</div>
+    )}
+  </section>
+
+  {latestShorts.length > 0 && (
+    <section class="block wrap">
+      <div class="section-head">
+        <h2>Latest Shorts</h2>
+        <a href="/shorts">All Shorts →</a>
+      </div>
+      <div class="grid shorts home-shorts">{latestShorts.map((v) => <VideoCard video={v} />)}</div>
+    </section>
+  )}
+
+  <section class="block wrap">
+    <h2>Pick a quest</h2>
+    <p class="section-lead">{site.questIntro}</p>
+    <div class="tiles">
+      {questTopics.map((t) => (
+        <a class:list={['tile', t.id]} style={`--t1:${t.color[0]};--t2:${t.color[1]}`} href={`/videos?topic=${t.id}`} data-count={t.count}>
+          <Icon name={t.icon} />
+          <h3>{t.label}</h3>
+          <p>{t.blurb}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="block wrap">
+    <div class="section-head">
+      <h2>From the water</h2>
+      <a href={site.socials.find((s) => s.id === 'instagram')!.url} rel="noopener" target="_blank">Instagram →</a>
+    </div>
+    <!-- Photo strip: Chopper's photo picks go in src/assets/photos/ (week 3). Placeholders until then. -->
+    <div class="strip" aria-label="Recent photos (coming soon)">
+      {['Sunrise launch', 'Creek sunfish', 'Kayak rigging', 'The rack', 'Cold front bass'].map((c) => <div class="ph">{c}<br />photo coming soon</div>)}
+    </div>
+  </section>
+</Base>

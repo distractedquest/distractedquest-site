@@ -1,0 +1,44 @@
+---
+// /links: the one link for every social bio. Mobile-first, thumb-reachable, no site chrome.
+import Base from '../layouts/Base.astro';
+import Logo from '../components/Logo.astro';
+import Icon from '../components/Icon.astro';
+import site from '../data/site.json';
+import { allVideos, fmtDate } from '../lib/videos';
+const latest = allVideos.find((v) => !v.isShort) ?? allVideos[0];
+const order = ['youtube', 'instagram', 'tiktok', 'facebook', 'x'];
+const socials = order.map((id) => site.socials.find((s) => s.id === id)!).filter(Boolean);
+---
+<Base title="Links" description="All the Distracted Quest links in one place: YouTube, Instagram, TikTok, Facebook, X and the website." bare>
+  <div class="links-page">
+    <button class="theme-toggle links-theme" type="button" aria-label="Toggle dark mode" data-theme-toggle><Icon name="sun" class="sun" /><Icon name="moon" class="moon" /></button>
+    <div class="links-inner">
+      <header class="links-head">
+        <Logo class="logo" />
+        <h1>Distracted Quest</h1>
+        <p>Fishing · Kayaks · Homelab · San Antonio, TX</p>
+      </header>
+
+      {latest && (
+        <a class="latest" href={`/videos/${latest.slug}`}>
+          <span class="thumb">{latest.thumbnail ? <img src={latest.thumbnail} alt="" width="480" height="270" /> : <span class="placeholder-thumb">{latest.title}</span>}</span>
+          <span class="cap" style="display:block"><small>Latest · {fmtDate(latest.published)}</small>{latest.title}</span>
+        </a>
+      )}
+
+      {socials.map((s, i) => (
+        <a class:list={['link-btn', { primary: i === 0 }]} href={s.url} rel="me noopener" target="_blank">
+          <Icon name={s.id} />
+          <span>{s.label}<small>{s.handle}</small></span>
+          <Icon name="arrow" class="arrow" />
+        </a>
+      ))}
+      <a class="link-btn" href="/videos"><Icon name="globe" /><span>All videos &amp; Shorts<small>distractedquest.com</small></span><Icon name="arrow" class="arrow" /></a>
+      <a class="link-btn" href={`mailto:${site.email}`}><Icon name="mail" /><span>Business inquiries<small>{site.email}</small></span><Icon name="arrow" class="arrow" /></a>
+
+      <footer class="links-foot">
+        <a href="/">Home</a><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a>
+      </footer>
+    </div>
+  </div>
+</Base>

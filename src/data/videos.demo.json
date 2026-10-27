@@ -1,0 +1,90 @@
+[
+  {
+    "id": "demo-long-1",
+    "slug": "demo-long-1",
+    "title": "Main quest is fishing, side quest is cigars",
+    "description": "Two mornings on the kayak, a couple of cigars, and zero fish on camera. Texas rig and Ned rig on a cold front.",
+    "published": "2026-10-28T15:00:00Z",
+    "thumbnail": "",
+    "isShort": false,
+    "topics": [
+      "fishing",
+      "kayaks"
+    ]
+  },
+  {
+    "id": "demo-short-1",
+    "slug": "demo-short-1",
+    "title": "Bass catch... and loss",
+    "description": "Hooked up from the kayak and lost it at the boat. Every angler knows this one.",
+    "published": "2026-10-27T15:00:00Z",
+    "thumbnail": "",
+    "isShort": true,
+    "topics": [
+      "fishing",
+      "kayaks"
+    ]
+  },
+  {
+    "id": "demo-short-2",
+    "slug": "demo-short-2",
+    "title": "Sunrise sunfish creek run",
+    "description": "Paddling a creek at sunrise for sunfish on light tackle.",
+    "published": "2026-10-24T13:00:00Z",
+    "thumbnail": "",
+    "isShort": true,
+    "topics": [
+      "fishing",
+      "kayaks"
+    ]
+  },
+  {
+    "id": "demo-long-2",
+    "slug": "demo-long-2",
+    "title": "ESXi homelab tour: what runs in the garage rack",
+    "description": "A walk through the ESXi host, the VMs, and the Cloudflare tunnel that keeps it all reachable.",
+    "published": "2026-10-20T18:00:00Z",
+    "thumbnail": "",
+    "isShort": false,
+    "topics": [
+      "homelab"
+    ]
+  },
+  {
+    "id": "demo-long-3",
+    "slug": "demo-long-3",
+    "title": "Rigging a fishing kayak on a budget",
+    "description": "Rod holders, a fish finder and a crate setup for under a hundred bucks.",
+    "published": "2026-10-15T18:00:00Z",
+    "thumbnail": "",
+    "isShort": false,
+    "topics": [
+      "kayaks",
+      "fishing"
+    ]
+  },
+  {
+    "id": "demo-short-3",
+    "slug": "demo-short-3",
+    "title": "Self-hosting a social scheduler in 60 seconds",
+    "description": "Postiz on Docker behind a tunnel.",
+    "published": "2026-10-12T18:00:00Z",
+    "thumbnail": "",
+    "isShort": true,
+    "topics": [
+      "homelab"
+    ]
+  },
+  {
+    "id": "demo-long-4",
+    "slug": "demo-long-4",
+    "title": "Cold front crappie off the points",
+    "description": "Finding crappie on the graph after the first norther of the year.",
+    "published": "2026-10-08T18:00:00Z",
+    "thumbnail": "",
+    "isShort": false,
+    "topics": [
+      "fishing"
+    ]
+  }
+]

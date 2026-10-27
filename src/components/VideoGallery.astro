@@ -1,0 +1,70 @@
+---
+import { filterTopics } from '../lib/topics';
+// Videos / Shorts grid with topic filter chips. Works without JS (shows everything);
+// a tiny script adds filtering and keeps ?topic=&kind= in the URL so filters are shareable.
+import VideoCard from './VideoCard.astro';
+import site from '../data/site.json';
+import { allVideos } from '../lib/videos';
+interface Props { initialKind: 'video' | 'short' }
+const { initialKind } = Astro.props;
+const yt = site.socials.find((s) => s.id === 'youtube')!;
+---
+<div class="filters" data-gallery data-initial-kind={initialKind}>
+  <div class="chips" role="group" aria-label="Filter by topic">
+    <button class="chip" type="button" data-topic="all" aria-pressed="true">All</button>
+    {filterTopics.map((t) => <button class="chip" type="button" data-topic={t.id} aria-pressed="false">{t.label}</button>)}
+  </div>
+  <div class="seg" role="group" aria-label="Videos or Shorts">
+    <button type="button" data-kind="video" aria-pressed={initialKind === 'video' ? 'true' : 'false'}>Videos</button>
+    <button type="button" data-kind="short" aria-pressed={initialKind === 'short' ? 'true' : 'false'}>Shorts</button>
+  </div>
+</div>
+{allVideos.length ? (
+  <>
+    <div class="grid" data-grid="video" hidden={initialKind !== 'video'}>
+      {allVideos.filter((v) => !v.isShort).map((v, i) => <VideoCard video={v} eager={i < 3} />)}
+    </div>
+    <div class="grid shorts" data-grid="short" hidden={initialKind !== 'short'}>
+      {allVideos.filter((v) => v.isShort).map((v, i) => <VideoCard video={v} eager={i < 4} />)}
+    </div>
+    <p class="empty" data-empty hidden><strong>Nothing here yet.</strong>Try another topic, or check back soon.</p>
+  </>
+) : (
+  <div class="empty"><strong>First videos are on the way.</strong>Uploads appear here automatically within a few hours of going live. <a href={yt.url} rel="noopener" target="_blank">Subscribe on YouTube</a>.</div>
+)}
+<script>
+  const box = document.querySelector<HTMLElement>('[data-gallery]');
+  if (box) {
+    const params = new URLSearchParams(location.search);
+    let topic = params.get('topic') || 'all';
+    let kind = params.get('kind') || box.dataset.initialKind || 'video';
+    const chips = box.querySelectorAll<HTMLButtonElement>('[data-topic]');
+    const kinds = box.querySelectorAll<HTMLButtonElement>('[data-kind]');
+    const grids = document.querySelectorAll<HTMLElement>('[data-grid]');
+    const empty = document.querySelector<HTMLElement>('[data-empty]');
+    const apply = (push: boolean) => {
+      chips.forEach((c) => c.setAttribute('aria-pressed', String(c.dataset.topic === topic)));
+      kinds.forEach((k) => k.setAttribute('aria-pressed', String(k.dataset.kind === kind)));
+      let shown = 0;
+      grids.forEach((g) => {
+        const on = g.dataset.grid === kind;
+        g.hidden = !on;
+        g.querySelectorAll<HTMLElement>('.card').forEach((card) => {
+          const match = topic === 'all' || (card.dataset.topics || '').split(' ').includes(topic);
+          card.hidden = !match;
+          if (on && match) shown++;
+        });
+      });
+      if (empty) empty.hidden = shown > 0 || grids.length === 0;
+      if (push) {
+        const u = new URL(location.href);
+        topic === 'all' ? u.searchParams.delete('topic') : u.searchParams.set('topic', topic);
+        kind === box.dataset.initialKind ? u.searchParams.delete('kind') : u.searchParams.set('kind', kind);
+        history.replaceState(null, '', u);
+      }
+    };
+    chips.forEach((c) => c.addEventListener('click', () => { topic = c.dataset.topic!; apply(true); }));
+    kinds.forEach((k) => k.addEventListener('click', () => { kind = k.dataset.kind!; apply(true); }));
+    apply(false);
+  }
+</script>

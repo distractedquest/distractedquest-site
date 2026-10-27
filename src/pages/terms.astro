@@ -1,0 +1,10 @@
+---
+// Text copied VERBATIM from Hoshi's live page https://distractedquest.com/terms (Oct 25, 2026 version).
+// The URL /terms must keep working: Meta / TikTok / Google app settings point at it.
+// Edit src/legal/terms.html to change the text (update the effective date when you do).
+import Base from '../layouts/Base.astro';
+import body from '../legal/terms.html?raw';
+---
+<Base title="Terms of Service">
+  <div class="wrap page prose legal"><Fragment set:html={body} /></div>
+</Base>

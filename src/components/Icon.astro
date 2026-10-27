@@ -1,0 +1,30 @@
+---
+// Small inline SVG icon set (no icon font, no extra requests).
+interface Props { name: string; class?: string; title?: string }
+const { name, class: cls, title } = Astro.props;
+const paths: Record<string, string> = {
+  youtube: '<path fill="currentColor" d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z"/>',
+  instagram: '<path fill="currentColor" d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2Zm0 4.9a4.9 4.9 0 1 0 0 9.8 4.9 4.9 0 0 0 0-9.8Zm0 8.1a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4Zm5.1-9.4a1.2 1.2 0 1 0 0 2.3 1.2 1.2 0 0 0 0-2.3Z"/>',
+  tiktok: '<path fill="currentColor" d="M16.6 2h-3.3v13.4a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V9.2a6.2 6.2 0 1 0 5.3 6.2V8.6a7.6 7.6 0 0 0 4.4 1.4V6.7a4.4 4.4 0 0 1-4.4-4.4Z"/>',
+  facebook: '<path fill="currentColor" d="M24 12a12 12 0 1 0-13.9 11.9v-8.4H7.1V12h3V9.4c0-3 1.8-4.7 4.5-4.7 1.3 0 2.7.2 2.7.2v3h-1.5c-1.5 0-2 .9-2 1.9V12h3.4l-.5 3.5h-2.9v8.4A12 12 0 0 0 24 12Z"/>',
+  x: '<path fill="currentColor" d="M18.2 2.3h3.4l-7.4 8.4 8.7 11.5h-6.8l-5.3-7-6.1 7H1.3l7.9-9L.9 2.3h7l4.8 6.4 5.5-6.4Zm-1.2 17.9h1.9L7 4.2H5l12 16Z"/>',
+  globe: '<path fill="none" stroke="currentColor" stroke-width="2" d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20Zm-10-10h20M12 2c2.5 2.7 4 6.2 4 10s-1.5 7.3-4 10c-2.5-2.7-4-6.2-4-10s1.5-7.3 4-10Z"/>',
+  mail: '<path fill="none" stroke="currentColor" stroke-width="2" d="M3 5h18v14H3zM3 6l9 7 9-7"/>',
+  arrow: '<path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="m9 5 7 7-7 7"/>',
+  play: '<path d="M7 4.5v15l13-7.5z"/>',
+  sun: '<g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 1.5v2.5M12 20v2.5M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M1.5 12H4M20 12h2.5M4.6 19.4l1.8-1.8M17.6 6.4l1.8-1.8"/></g>',
+  moon: '<path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11Z"/>',
+  menu: '<path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/>',
+  fish: '<g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M2.5 12c3-4.5 8.5-6 13-3.2L21.5 5v14l-6-3.8C11 18 5.5 16.5 2.5 12Z"/><circle cx="8" cy="11" r=".9" fill="currentColor"/></g>',
+  kayak: '<g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 15c4 2.5 16 2.5 20 0-4-2-16-2-20 0Z"/><path d="m5 21 14-17"/><path d="M17.5 2.5 21 5.5M3 19.5 6.5 22.5"/></g>',
+  target: '<g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.5"/><path d="M12 1.5v4M12 18.5v4M1.5 12h4M18.5 12h4"/></g>',
+  flame: '<path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M12 22c-4.2 0-7-2.8-7-6.6 0-3.6 2.6-5.6 3.8-8.9.6 1.9 1.6 3 2.7 3.6C11.8 6.9 13 4 15.6 2c-.3 3.1 1 5.2 2.3 7.2 1 1.6 1.6 3.4 1.6 5.6 0 4.1-3 7.2-7.5 7.2Zm0 0c-1.8 0-3-1.3-3-3 0-1.9 1.6-2.8 2.2-4.6 1.6 1.2 3.8 2.6 3.8 4.8 0 1.6-1.2 2.8-3 2.8Z"/>',
+  gamepad: '<g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10a5 5 0 0 1 4.8 6.3l-1.2 4.4a2.4 2.4 0 0 1-4 1L14.3 16H9.7l-2.3 2.7a2.4 2.4 0 0 1-4-1l-1.2-4.4A5 5 0 0 1 7 7Z"/><path d="M8 10v4M6 12h4"/><circle cx="15.5" cy="11" r=".6" fill="currentColor"/><circle cx="17.5" cy="13" r=".6" fill="currentColor"/></g>',
+  smoke: '<g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="15" width="16" height="4" rx="1.5"/><path d="M14 15v4M21 15v4M21 11c0-2-2-2-2-4s2-2 2-4M17.5 11c0-1.6-1.5-1.8-1.5-3.4"/></g>',
+  robot: '<g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="11" rx="3"/><path d="M12 8V4.5M2 13v2M22 13v2M9 17h6"/><circle cx="12" cy="3.5" r="1"/><circle cx="9" cy="12.5" r="1.2" fill="currentColor"/><circle cx="15" cy="12.5" r="1.2" fill="currentColor"/></g>',
+  rocket: '<g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4.5c2.4-1.6 5-2 6.5-2-.1 1.5-.5 4.1-2.1 6.5L12 16l-4-4 6.5-7.5Z"/><path d="M8 12l-3.5.5L2 15l4.5 1M12 16l-.5 3.5L9 22l-1-4.5"/><circle cx="15.8" cy="8.2" r="1.4"/><path d="M5.5 18.5c-1 1-1.5 3-1.5 3s2-.5 3-1.5"/></g>',
+  server: '<g fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="7" rx="2"/><rect x="3" y="14" width="18" height="7" rx="2"/><path d="M7 6.5h.01M7 17.5h.01M11 6.5h6M11 17.5h6" stroke-linecap="round"/></g>',
+};
+const body = paths[name] ?? '';
+---
+<svg viewBox="0 0 24 24" class={cls} aria-hidden={title ? undefined : 'true'} role={title ? 'img' : undefined} fill="currentColor"><Fragment set:html={(title ? `<title>${title}</title>` : '') + body} /></svg>

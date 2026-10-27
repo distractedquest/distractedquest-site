@@ -1,0 +1,69 @@
+---
+import Base from '../../layouts/Base.astro';
+import VideoCard from '../../components/VideoCard.astro';
+import Icon from '../../components/Icon.astro';
+import site from '../../data/site.json';
+import { allVideos, watchUrl, embedUrl, fmtDate, excerpt, type Video } from '../../lib/videos';
+
+export function getStaticPaths() {
+  return allVideos.map((video) => ({ params: { slug: video.slug }, props: { video } }));
+}
+const { video: v } = Astro.props as { video: Video };
+const related = allVideos
+  .filter((o) => o.id !== v.id && o.topics.some((t) => v.topics.includes(t)))
+  .slice(0, 3);
+import { topicLabel as label, topicsOf, topicStyle } from '../../lib/topics';
+const vt = topicsOf(v);
+const thumb = v.thumbnail || '/og-default.jpg';
+const videoLd: Record<string, unknown> = {
+  '@context': 'https://schema.org',
+  '@type': 'VideoObject',
+  name: v.title,
+  description: excerpt(v.description || v.title, 300),
+  thumbnailUrl: [v.thumbnail || new URL('/og-default.jpg', Astro.site).href],
+  uploadDate: v.published,
+  contentUrl: watchUrl(v),
+  embedUrl: `https://www.youtube.com/embed/${v.id}`,
+  publisher: { '@type': 'Organization', name: site.name, url: 'https://distractedquest.com/' },
+};
+if (v.duration) videoLd.duration = v.duration;
+---
+<Base title={v.title} description={excerpt(v.description || site.description)} image={thumb} ogType="video.other" jsonLd={videoLd}>
+  <div class="wrap page">
+    <div class="narrow" style="margin:0 auto">
+      <div class="eyebrow">{v.isShort ? 'Short' : 'Video'} · <time datetime={v.published}>{fmtDate(v.published)}</time></div>
+      <h1 style="font-size:clamp(1.6rem,4.5vw,2.4rem)">{v.title}</h1>
+      <!-- Lite embed: only the thumbnail loads until the visitor taps play (keeps the page fast). -->
+      <div class:list={['player', { short: v.isShort }]} data-player data-embed={embedUrl(v)}>
+        <button type="button" aria-label={`Play ${v.title}`}>
+          {v.thumbnail ? <img src={v.thumbnail} alt="" width="480" height="360" /> : <span class="placeholder-thumb">{v.title}</span>}
+          <span class="big-play"><Icon name="play" /></span>
+        </button>
+      </div>
+      <p class="meta" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px">
+        {vt.map((t) => <a class:list={['tag', t]} style={topicStyle(t)} href={`/videos?topic=${t}`} style="text-decoration:none">{label(t)}</a>)}
+        <a href={watchUrl(v)} rel="noopener" target="_blank">Watch on YouTube →</a>
+      </p>
+      {v.description && <div class="desc">{v.description}</div>}
+      <!-- Week 2+: gear used, location, and a transcript excerpt can be added via src/data/video-notes/<slug>.md -->
+    </div>
+    {related.length > 0 && (
+      <section class="block">
+        <h2>More like this</h2>
+        <div class="grid">{related.map((r) => <VideoCard video={r} />)}</div>
+      </section>
+    )}
+  </div>
+</Base>
+<script>
+  document.querySelectorAll<HTMLElement>('[data-player]').forEach((p) => {
+    p.querySelector('button')?.addEventListener('click', () => {
+      const f = document.createElement('iframe');
+      f.src = p.dataset.embed!;
+      f.title = 'YouTube video player';
+      f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      f.allowFullscreen = true;
+      p.replaceChildren(f);
+    });
+  });
+</script>

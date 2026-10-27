@@ -1,0 +1,147 @@
+---
+import '../styles/global.css';
+import Logo from '../components/Logo.astro';
+import Icon from '../components/Icon.astro';
+import site from '../data/site.json';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;          // absolute or root-relative OG image
+  ogType?: string;
+  jsonLd?: object | object[];
+  bare?: boolean;          // no header/footer (used by /links)
+  noindex?: boolean;
+}
+// Palette switch: site.json `palette` (sunrise | quest | dusk); DQ_PALETTE env overrides for previews.
+const palette = process.env.DQ_PALETTE || (site as any).palette || 'sunrise';
+const { title, description = site.description, image = '/og-default.jpg', ogType = 'website', jsonLd, bare = false, noindex = false } = Astro.props;
+const fullTitle = title ? `${title} | ${site.name}` : `${site.name}: ${site.headline}`;
+const path = Astro.url.pathname.replace(/\.html$/, '').replace(/\/index$/, '/').replace(/(.)\/$/, '$1') || '/';
+const canonical = new URL(path, Astro.site);
+const ogImage = new URL(image, Astro.site).href;
+const nav = [
+  { href: '/', label: 'Home' },
+  { href: '/videos', label: 'Videos' },
+  { href: '/shorts', label: 'Shorts' },
+  { href: '/about', label: 'About' },
+  { href: '/contact', label: 'Contact' },
+  { href: '/links', label: 'Links' },
+];
+const isCurrent = (href: string) => (href === '/' ? path === '/' : path.startsWith(href));
+const orgLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: site.name,
+  url: Astro.site?.href,
+  logo: new URL('/icon-512.png', Astro.site).href,
+  email: site.email,
+  sameAs: site.socials.map((s) => s.url),
+};
+const ld = [orgLd, ...(Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [])];
+---
+<!doctype html>
+<html lang="en" data-palette={palette}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical.href} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <link rel="icon" href="/favicon-48.png" type="image/png" sizes="48x48" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta name="theme-color" content="#000b22" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#000b22" media="(prefers-color-scheme: dark)" />
+    <meta name="color-scheme" content="light dark" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={title ?? site.name} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical.href} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="en_US" />
+    <!-- X / Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@distractedquest" />
+    <meta name="twitter:title" content={title ?? site.name} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    {ld.map((obj) => <script type="application/ld+json" set:html={JSON.stringify(obj)} />)}
+
+    <!-- Theme: follow the phone/OS setting, remember a manual toggle. Runs before paint to avoid a flash. -->
+    <script is:inline>
+      (function () {
+        try {
+          var t = localStorage.getItem('dq-theme');
+          if (!t) t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          document.documentElement.dataset.theme = t;
+        } catch (e) {}
+      })();
+    </script>
+
+    <!--
+      CLOUDFLARE WEB ANALYTICS BEACON GOES HERE (only if needed).
+      Preferred: Cloudflare dashboard > Web Analytics > Add a site > distractedquest.com.
+      The domain is proxied by Cloudflare, so the beacon is injected automatically and
+      nothing is needed in code.
+      If automatic injection is off, paste the snippet Cloudflare shows, e.g.:
+      <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+              data-cf-beacon='{"token": "YOUR_TOKEN"}'></script>
+    -->
+  </head>
+  <body>
+    {bare ? (
+      <slot />
+    ) : (
+      <>
+        <a class="skip" href="#main">Skip to content</a>
+        <header class="site-header">
+          <div class="wrap">
+            <a class="brand" href="/" aria-label={`${site.name} home`}><Logo /><span>DISTRACTED QUEST</span></a>
+            <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><Icon name="menu" /></button>
+            <nav class="nav" id="site-nav" aria-label="Main">
+              {nav.map((n) => <a href={n.href} aria-current={isCurrent(n.href) ? 'page' : undefined}>{n.label}</a>)}
+            </nav>
+            <button class="theme-toggle" type="button" aria-label="Toggle dark mode" data-theme-toggle><Icon name="sun" class="sun" /><Icon name="moon" class="moon" /></button>
+          </div>
+        </header>
+        <main id="main"><slot /></main>
+        <footer class="site-footer">
+          <div class="wrap">
+            <div>
+              <strong style="color:var(--text)">{site.name}</strong><br />
+              &copy; {new Date().getFullYear()} {site.name}. <a href={`mailto:${site.email}`}>{site.email}</a>
+            </div>
+            <nav aria-label="Footer">
+              <a href="/videos">Videos</a><a href="/shorts">Shorts</a><a href="/about">About</a><a href="/contact">Contact</a><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a>
+            </nav>
+            <div class="social-row">
+              {site.socials.map((s) => <a href={s.url} rel="me noopener" target="_blank" aria-label={s.label}><Icon name={s.id} /></a>)}
+            </div>
+          </div>
+        </footer>
+      </>
+    )}
+    <script>
+      const root = document.documentElement;
+      document.querySelectorAll<HTMLButtonElement>('[data-theme-toggle]').forEach((b) =>
+        b.addEventListener('click', () => {
+          const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+          root.dataset.theme = next;
+          try { localStorage.setItem('dq-theme', next); } catch {}
+        }),
+      );
+      const menu = document.querySelector<HTMLButtonElement>('.menu-btn');
+      const nav = document.getElementById('site-nav');
+      menu?.addEventListener('click', () => {
+        const open = nav?.classList.toggle('open');
+        menu.setAttribute('aria-expanded', String(!!open));
+      });
+    </script>
+  </body>
+</html>
