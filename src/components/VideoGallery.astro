@@ -1,4 +1,5 @@
 ---
+import { filterTopics } from '../lib/topics';
 // Videos / Shorts grid with topic filter chips. Works without JS (shows everything);
 // a tiny script adds filtering and keeps ?topic=&kind= in the URL so filters are shareable.
 import VideoCard from './VideoCard.astro';
@@ -11,7 +12,7 @@ const yt = site.socials.find((s) => s.id === 'youtube')!;
 <div class="filters" data-gallery data-initial-kind={initialKind}>
   <div class="chips" role="group" aria-label="Filter by topic">
     <button class="chip" type="button" data-topic="all" aria-pressed="true">All</button>
-    {site.topics.map((t) => <button class="chip" type="button" data-topic={t.id} aria-pressed="false">{t.label}</button>)}
+    {filterTopics.map((t) => <button class="chip" type="button" data-topic={t.id} aria-pressed="false">{t.label}</button>)}
   </div>
   <div class="seg" role="group" aria-label="Videos or Shorts">
     <button type="button" data-kind="video" aria-pressed={initialKind === 'video' ? 'true' : 'false'}>Videos</button>

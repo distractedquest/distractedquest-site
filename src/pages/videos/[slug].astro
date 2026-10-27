@@ -12,7 +12,8 @@ const { video: v } = Astro.props as { video: Video };
 const related = allVideos
   .filter((o) => o.id !== v.id && o.topics.some((t) => v.topics.includes(t)))
   .slice(0, 3);
-const label = (id: string) => site.topics.find((t) => t.id === id)?.label ?? id;
+import { topicLabel as label, topicsOf, topicStyle } from '../../lib/topics';
+const vt = topicsOf(v);
 const thumb = v.thumbnail || '/og-default.jpg';
 const videoLd: Record<string, unknown> = {
   '@context': 'https://schema.org',
@@ -40,7 +41,7 @@ if (v.duration) videoLd.duration = v.duration;
         </button>
       </div>
       <p class="meta" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px">
-        {v.topics.map((t) => <a class:list={['tag', t]} href={`/videos?topic=${t}`} style="text-decoration:none">{label(t)}</a>)}
+        {vt.map((t) => <a class:list={['tag', t]} style={topicStyle(t)} href={`/videos?topic=${t}`} style="text-decoration:none">{label(t)}</a>)}
         <a href={watchUrl(v)} rel="noopener" target="_blank">Watch on YouTube →</a>
       </p>
       {v.description && <div class="desc">{v.description}</div>}

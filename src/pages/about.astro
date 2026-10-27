@@ -1,6 +1,8 @@
 ---
 import Base from '../layouts/Base.astro';
 import site from '../data/site.json';
+import { topics } from '../lib/topics';
+const fallbackTopics = topics.filter((t) => ['fishing', 'kayaks', 'homelab'].includes(t.id));
 ---
 <Base title="About" description="Main quest: life. Side quests: kayak fishing, homelab projects and whatever comes next, from the San Antonio area.">
   <div class="wrap page prose">
@@ -13,7 +15,7 @@ import site from '../data/site.json';
     <p>If you like the outdoors, tinkering, or getting a little sidetracked, you're in the right place. Grab your gear and come along. The main quest can wait.</p>
     <h2>What you'll find here</h2>
     <ul>
-      {site.topics.map((t) => <li><a href={`/videos?topic=${t.id}`}><strong>{t.label}</strong></a>: {t.blurb}</li>)}
+      {fallbackTopics.map((t) => <li><a href={`/videos?topic=${t.id}`}><strong>{t.label}</strong></a>: {t.blurb}</li>)}
       <li><strong>Other side quests</strong>: firearms, BBQ, gaming, pipes &amp; cigars, autonomous technologies, space and everything in between.</li>
     </ul>
     <h2>Follow along</h2>

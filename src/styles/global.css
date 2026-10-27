@@ -218,3 +218,7 @@ section.block { padding: 8px 0 24px; }
 .hero p.tagline, .hero p.kicker { max-width: 44ch; text-wrap: balance; text-shadow: 0 1px 10px rgba(0,0,0,.35); }
 .hero p.kicker { opacity: .85; }
 .section-lead { text-wrap: pretty; }
+
+/* Data-driven topic colors (from src/data/topics.json via --t1/--t2) */
+.tile[style*='--t1'] { background: linear-gradient(150deg, var(--t1), var(--t2)); }
+.tag[style*='--t1'] { background: color-mix(in srgb, var(--t1) 20%, transparent); color: color-mix(in srgb, var(--t1) 75%, var(--text)); }

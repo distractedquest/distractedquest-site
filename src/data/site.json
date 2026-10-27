@@ -8,15 +8,37 @@
   "email": "distractedquest@gmail.com",
   "youtubeChannelId": "UCPAbQ9ezojvxz4BNbjARQUQ",
   "socials": [
-    { "id": "youtube", "label": "YouTube", "handle": "@distractedquest", "url": "https://www.youtube.com/@distractedquest" },
-    { "id": "instagram", "label": "Instagram", "handle": "@distractedquest", "url": "https://www.instagram.com/distractedquest" },
-    { "id": "tiktok", "label": "TikTok", "handle": "@distractedquest", "url": "https://www.tiktok.com/@distractedquest" },
-    { "id": "facebook", "label": "Facebook", "handle": "Distracted Quest", "url": "https://www.facebook.com/profile.php?id=61595684019632" },
-    { "id": "x", "label": "X", "handle": "@distractedquest", "url": "https://x.com/distractedquest" }
+    {
+      "id": "youtube",
+      "label": "YouTube",
+      "handle": "@distractedquest",
+      "url": "https://www.youtube.com/@distractedquest"
+    },
+    {
+      "id": "instagram",
+      "label": "Instagram",
+      "handle": "@distractedquest",
+      "url": "https://www.instagram.com/distractedquest"
+    },
+    {
+      "id": "tiktok",
+      "label": "TikTok",
+      "handle": "@distractedquest",
+      "url": "https://www.tiktok.com/@distractedquest"
+    },
+    {
+      "id": "facebook",
+      "label": "Facebook",
+      "handle": "Distracted Quest",
+      "url": "https://www.facebook.com/profile.php?id=61595684019632"
+    },
+    {
+      "id": "x",
+      "label": "X",
+      "handle": "@distractedquest",
+      "url": "https://x.com/distractedquest"
+    }
   ],
-  "topics": [
-    { "id": "fishing", "label": "Fishing", "blurb": "Bass, sunfish and whatever bites, mostly from a kayak." },
-    { "id": "kayaks", "label": "Kayaks", "blurb": "Creek runs, lake mornings, rigging and launches." },
-    { "id": "homelab", "label": "Homelab", "blurb": "ESXi, self-hosting, tunnels and the rack in the garage." }
-  ]
+  "heroVariant": "art",
+  "palette": "sunrise"
 }

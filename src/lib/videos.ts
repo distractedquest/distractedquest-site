@@ -1,7 +1,7 @@
 import realVideos from '../data/videos.json';
 import demoVideos from '../data/videos.demo.json';
 
-export type Topic = 'fishing' | 'kayaks' | 'homelab';
+export type Topic = string; // ids from src/data/topics.json
 
 export interface Video {
   id: string;            // YouTube video id

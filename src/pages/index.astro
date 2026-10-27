@@ -8,7 +8,7 @@ import { allVideos, longVideos, shorts } from '../lib/videos';
 const latest = longVideos.slice(0, 6);
 const latestShorts = shorts.slice(0, 4);
 const yt = site.socials.find((s) => s.id === 'youtube')!;
-const topicIcon: Record<string, string> = { fishing: 'fish', kayaks: 'kayak', homelab: 'server' };
+import { questTopics } from '../lib/topics';
 const webSiteLd = { '@context': 'https://schema.org', '@type': 'WebSite', name: site.name, url: 'https://distractedquest.com/' };
 ---
 <Base jsonLd={webSiteLd}>
@@ -52,9 +52,9 @@ const webSiteLd = { '@context': 'https://schema.org', '@type': 'WebSite', name: 
     <h2>Pick a quest</h2>
     <p class="section-lead">{site.questIntro}</p>
     <div class="tiles">
-      {site.topics.map((t) => (
-        <a class:list={['tile', t.id]} href={`/videos?topic=${t.id}`}>
-          <Icon name={topicIcon[t.id]} />
+      {questTopics.map((t) => (
+        <a class:list={['tile', t.id]} style={`--t1:${t.color[0]};--t2:${t.color[1]}`} href={`/videos?topic=${t.id}`} data-count={t.count}>
+          <Icon name={t.icon} />
           <h3>{t.label}</h3>
           <p>{t.blurb}</p>
         </a>

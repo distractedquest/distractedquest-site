@@ -5,9 +5,10 @@ import Icon from './Icon.astro';
 import site from '../data/site.json';
 interface Props { video: Video; eager?: boolean }
 const { video: v, eager = false } = Astro.props;
-const label = (id: string) => site.topics.find((t) => t.id === id)?.label ?? id;
+import { topicLabel as label, topicsOf, topicStyle } from '../lib/topics';
+const vt = topicsOf(v);
 ---
-<article class:list={['card', { short: v.isShort }]} data-topics={v.topics.join(' ')} data-kind={v.isShort ? 'short' : 'video'}>
+<article class:list={['card', { short: v.isShort }]} data-topics={vt.join(' ')} data-kind={v.isShort ? 'short' : 'video'}>
   <a class="thumb" href={`/videos/${v.slug}`} aria-label={v.title}>
     {v.thumbnail ? (
       <img src={v.thumbnail} alt="" loading={eager ? 'eager' : 'lazy'} decoding="async" width={v.isShort ? 405 : 480} height={v.isShort ? 720 : 270} />
@@ -21,7 +22,7 @@ const label = (id: string) => site.topics.find((t) => t.id === id)?.label ?? id;
     <div class="meta">
       <time datetime={v.published}>{fmtDate(v.published)}</time>
       {v.isShort && <span class="tag">Short</span>}
-      {v.topics.map((t) => <span class:list={['tag', t]}>{label(t)}</span>)}
+      {vt.map((t) => <span class:list={['tag', t]} style={topicStyle(t)}>{label(t)}</span>)}
     </div>
   </div>
 </article>
