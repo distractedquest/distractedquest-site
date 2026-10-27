@@ -50,8 +50,9 @@ embeds, Blog, Gear page, real media-kit stats.
 
 ## Dan's remaining steps (in order)
 a. **Connect GitHub to Locutus** (one-time sign-in, done by Dan).
-b. **Locutus creates the repo** `distractedquest-site`, pushes `main` with only the scaffold, and opens the MVP PR (assistant step, after the connect).
-   _Locutus's plan: push the current work on a `mvp` branch and open the PR against a minimal `main`, so Dan reviews one PR._
+b. **Locutus creates the repo** `distractedquest-site`, pushes, and opens the MVP PR (an assistant step, done after the connect).
+   Everything is currently one commit on local `main`. To give Dan a PR to review, push a bare initial commit as `main`
+   and this work as an `mvp` branch, then open `mvp` → `main`.
 c. **Review and merge the MVP PR** (CI must be green).
 d. **Cloudflare dashboard → Workers & Pages → Create → Workers → Import a repository → GitHub → `distractedquest-site`.**
    Worker name `distractedquest-site` · production branch `main` · root `/` · build command `npm run build` ·
