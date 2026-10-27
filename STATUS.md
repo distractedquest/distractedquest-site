@@ -5,7 +5,7 @@ _Last updated: Mon Oct 26, 2026, ~10:15 PM CT. Built on the Locutus box; nothing
 ## Done
 - **Astro 7.4.2 static site** (Node 22.23.4+), local git repo on `main`, ready to push to a new GitHub repo.
   - `/links` hub, Home, `/videos` + `/shorts` gallery (topic chips Fishing/Kayaks/Homelab + Videos/Shorts switch,
-    shareable `?topic=` URLs), per-video pages `/videos/<slug>` (lite embed + VideoObject), placeholder About and Contact, 404.
+    shareable `?topic=` URLs), per-video pages `/videos/<slug>` (lite embed + VideoObject), About (final copy) and placeholder Contact, 404.
   - Mobile-first outdoorsy design (lake green / sunrise orange), dark/light following the phone setting plus a toggle.
     Almost no JavaScript, no web fonts, 220 KB total build.
 - **Privacy & Terms copied verbatim to the same paths** (text and links checked against the live pages, identical).
@@ -39,7 +39,7 @@ _Last updated: Mon Oct 26, 2026, ~10:15 PM CT. Built on the Locutus box; nothing
 2. **Social URLs to confirm** (assumed from the "@distractedquest everywhere" line on Hoshi's home page): instagram.com/distractedquest,
    tiktok.com/@distractedquest, x.com/distractedquest, facebook.com/profile.php?id=61595684019632 (Dan's Facebook Page, confirmed by Dan Oct 27; Hoshi to verify).
    They're edited in `src/data/site.json`.
-3. **About text is being drafted by Hoshi for Dan's review/approval; the placeholder stays until approved.** Other placeholder copy: About ("Hi, I'm Dan…"), the Contact media-kit numbers, home photo strip, hero art (an illustrated sunrise
+3. **About text: DONE** (drafted by Hoshi, approved by Dan Oct 27). Still placeholder: About photo, the Contact media-kit numbers, home photo strip, hero art (an illustrated sunrise
    until Chopper supplies a hero photo or clip), logo (placeholder badge until the channel logo is added).
 4. **GitHub repo: create it PUBLIC** (Dan decided Oct 27).
 5. "Cigars / side quests" content currently tags as Fishing/Kayaks only. A 4th topic could be added later if wanted.
