@@ -14,6 +14,7 @@ import site from '../data/site.json';
     <h2>What you'll find here</h2>
     <ul>
       {site.topics.map((t) => <li><a href={`/videos?topic=${t.id}`}><strong>{t.label}</strong></a>: {t.blurb}</li>)}
+      <li><strong>Other side quests</strong>: firearms, BBQ, gaming, pipes &amp; cigars, autonomous technologies, space and everything in between.</li>
     </ul>
     <h2>Follow along</h2>
     <p>{site.socials.map((s, i) => <>{i > 0 && ' · '}<a href={s.url} rel="me noopener" target="_blank">{s.label}</a></>)}</p>

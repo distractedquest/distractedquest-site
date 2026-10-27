@@ -14,7 +14,7 @@ interface Props {
   noindex?: boolean;
 }
 const { title, description = site.description, image = '/og-default.jpg', ogType = 'website', jsonLd, bare = false, noindex = false } = Astro.props;
-const fullTitle = title ? `${title} | ${site.name}` : `${site.name}: ${site.tagline}`;
+const fullTitle = title ? `${title} | ${site.name}` : `${site.name}: ${site.headline}`;
 const path = Astro.url.pathname.replace(/\.html$/, '').replace(/\/index$/, '/').replace(/(.)\/$/, '$1') || '/';
 const canonical = new URL(path, Astro.site);
 const ogImage = new URL(image, Astro.site).href;
