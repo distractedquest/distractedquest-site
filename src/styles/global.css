@@ -211,3 +211,10 @@ section.block { padding: 8px 0 24px; }
 @media (min-width: 760px) { .home-shorts { grid-template-columns: repeat(4, 1fr); } }
 .grid.shorts .card .body { padding: 10px 12px 12px; }
 .grid.shorts .card h3 { font-size: 1rem; }
+
+.hero p.tagline { margin-bottom: .35em; }
+.hero p.kicker { font-size: clamp(.92rem, 1.8vw, 1.05rem); font-style: italic; opacity: .78; margin: 0 0 1.4em; }
+.section-lead { color: var(--muted, inherit); opacity: .85; max-width: 60ch; margin: -.2em 0 1.1em; }
+.hero p.tagline, .hero p.kicker { max-width: 44ch; text-wrap: balance; text-shadow: 0 1px 10px rgba(0,0,0,.35); }
+.hero p.kicker { opacity: .85; }
+.section-lead { text-wrap: pretty; }

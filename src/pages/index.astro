@@ -17,7 +17,8 @@ const webSiteLd = { '@context': 'https://schema.org', '@type': 'WebSite', name: 
     <div class="wrap">
       <div class="eyebrow" style="color:var(--sunrise-soft)">San Antonio, Texas</div>
       <h1>Main Quest: Life, Side Quest: Everything Else</h1>
-      <p>{site.tagline}</p>
+      <p class="tagline">{site.tagline}</p>
+      <p class="kicker">{site.kicker}</p>
       <div class="actions">
         <a class="btn btn-primary" href={`${yt.url}?sub_confirmation=1`} rel="noopener" target="_blank"><Icon name="youtube" /> Subscribe on YouTube</a>
         <a class="btn btn-ghost" href="/links">Follow everywhere</a>
@@ -49,6 +50,7 @@ const webSiteLd = { '@context': 'https://schema.org', '@type': 'WebSite', name: 
 
   <section class="block wrap">
     <h2>Pick a quest</h2>
+    <p class="section-lead">{site.questIntro}</p>
     <div class="tiles">
       {site.topics.map((t) => (
         <a class:list={['tile', t.id]} href={`/videos?topic=${t.id}`}>
