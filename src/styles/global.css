@@ -61,7 +61,7 @@ h3 { font-size: 1.15rem; margin: 0 0 .3em; }
 .site-header { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: saturate(1.4) blur(10px); border-bottom: 1px solid var(--border); }
 .site-header .wrap { display: flex; align-items: center; gap: 12px; min-height: 60px; }
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); font-family: var(--font-display); font-weight: 800; letter-spacing: .02em; }
-.brand svg { width: 34px; height: 34px; flex: none; }
+.brand svg, .brand img { width: 34px; height: 34px; flex: none; }
 .brand span { font-size: 1.05rem; }
 .nav { margin-left: auto; display: flex; align-items: center; gap: 4px; }
 .nav a { text-decoration: none; color: var(--text); padding: 10px 12px; border-radius: 10px; font-weight: 600; font-size: .95rem; }
@@ -222,3 +222,28 @@ section.block { padding: 8px 0 24px; }
 /* Data-driven topic colors (from src/data/topics.json via --t1/--t2) */
 .tile[style*='--t1'] { background: linear-gradient(150deg, var(--t1), var(--t2)); }
 .tag[style*='--t1'] { background: color-mix(in srgb, var(--t1) 20%, transparent); color: color-mix(in srgb, var(--t1) 75%, var(--text)); }
+
+/* Logo hero variant (site.json heroVariant: "logo") — banner art from the social profiles */
+.hero-logo { background: var(--brand-navy, #000b22); }
+.hero-logo .hero-banner { display: block; width: 100%; max-width: 1500px; margin: 0 auto; height: auto; aspect-ratio: 3 / 1; object-fit: cover; }
+.hero-logo .wrap { padding-top: clamp(20px, 4vw, 40px); padding-bottom: clamp(40px, 7vw, 80px); }
+.hero-logo .eyebrow { color: var(--brand-sky, #58aaed) !important; }
+
+/* Palettes (site.json palette). "sunrise" = :root defaults above. */
+:root[data-palette='quest'] {
+  --brand-navy: #000b22; --brand-sky: #58aaed;
+  --lake: #0a84f0; --lake-deep: #09224e; --sunrise: #0a84f0; --sunrise-soft: #58aaed;
+  --sand: #f3f6fb; --bg: #f4f7fb; --surface: #ffffff; --surface-2: #e6edf7;
+  --text: #0d1626; --muted: #4f5d73; --border: #d5deeb; --accent: #0a6fd0; --link: #0a64c2;
+}
+:root[data-palette='quest'][data-theme='dark'] { --bg: #000b22; --surface: #071634; --surface-2: #0c2148; --text: #e8f0fb; --muted: #9fb2cf; --border: #183166; --accent: #2b95f5; --accent-contrast: #00122e; --link: #6fb6f5; }
+:root[data-palette='quest'] .btn-primary { background: #0a84f0; color: #fff; }
+:root[data-palette='dusk'] {
+  --brand-navy: #000b22; --brand-sky: #f6a04d;
+  --lake: #09224e; --lake-deep: #000b22; --sunrise: #f28c28; --sunrise-soft: #f6c28b;
+  --sand: #f7f4ee; --bg: #f7f4ee; --surface: #ffffff; --surface-2: #ece6db;
+  --text: #121a2b; --muted: #59606e; --border: #ddd5c7; --accent: #09224e; --link: #0a5fb8;
+}
+:root[data-palette='dusk'][data-theme='dark'] { --bg: #050d1f; --surface: #0b1730; --surface-2: #12224a; --text: #eef1f7; --muted: #a3acc0; --border: #1d2d55; --accent: #f28c28; --accent-contrast: #1a0d02; --link: #f6b06a; }
+.brand-logo { border-radius: 50%; display: block; }
+.hero-logo .hero-banner { max-height: 340px; }

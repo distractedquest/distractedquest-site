@@ -13,6 +13,8 @@ interface Props {
   bare?: boolean;          // no header/footer (used by /links)
   noindex?: boolean;
 }
+// Palette switch: site.json `palette` (sunrise | quest | dusk); DQ_PALETTE env overrides for previews.
+const palette = process.env.DQ_PALETTE || (site as any).palette || 'sunrise';
 const { title, description = site.description, image = '/og-default.jpg', ogType = 'website', jsonLd, bare = false, noindex = false } = Astro.props;
 const fullTitle = title ? `${title} | ${site.name}` : `${site.name}: ${site.headline}`;
 const path = Astro.url.pathname.replace(/\.html$/, '').replace(/\/index$/, '/').replace(/(.)\/$/, '$1') || '/';
@@ -39,7 +41,7 @@ const orgLd = {
 const ld = [orgLd, ...(Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [])];
 ---
 <!doctype html>
-<html lang="en">
+<html lang="en" data-palette={palette}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />

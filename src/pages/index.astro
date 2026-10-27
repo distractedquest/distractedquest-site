@@ -9,11 +9,15 @@ const latest = longVideos.slice(0, 6);
 const latestShorts = shorts.slice(0, 4);
 const yt = site.socials.find((s) => s.id === 'youtube')!;
 import { questTopics } from '../lib/topics';
+// Hero switch: site.json `heroVariant` (art | logo); DQ_HERO env overrides for previews.
+const heroVariant = process.env.DQ_HERO || (site as any).heroVariant || 'art';
 const webSiteLd = { '@context': 'https://schema.org', '@type': 'WebSite', name: site.name, url: 'https://distractedquest.com/' };
 ---
 <Base jsonLd={webSiteLd}>
-  <section class="hero">
-    <HeroArt />
+  <section class:list={['hero', { 'hero-logo': heroVariant === 'logo' }]}>
+    {heroVariant === 'logo'
+      ? <img class="hero-banner" src="/brand/banner.jpg" width="1500" height="500" alt="Distracted Quest" fetchpriority="high" />
+      : <HeroArt />}
     <div class="wrap">
       <div class="eyebrow" style="color:var(--sunrise-soft)">San Antonio, Texas</div>
       <h1>Main Quest: Life, Side Quest: Everything Else</h1>

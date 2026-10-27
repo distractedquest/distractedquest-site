@@ -1,8 +1,12 @@
 ---
 // Placeholder mark: a compass-rose / lure badge. Swap for the channel logo from Chopper (public/logo.svg) later.
 interface Props { class?: string; size?: number }
+import site from '../data/site.json';
 const { class: cls, size } = Astro.props;
+// With heroVariant "logo", use the real channel logo (public/brand/logo.jpg, from the YouTube/X profile picture).
+const useBrand = (process.env.DQ_HERO || (site as any).heroVariant) === 'logo';
 ---
+{useBrand ? <img src="/brand/logo.jpg" class:list={[cls, 'brand-logo']} width={size ?? 36} height={size ?? 36} alt="" /> :
 <svg viewBox="0 0 64 64" class={cls} width={size} height={size} aria-hidden="true">
   <defs>
     <linearGradient id="dq-g" x1="0" y1="0" x2="0" y2="1">
@@ -15,3 +19,4 @@ const { class: cls, size } = Astro.props;
   <path d="M8 44c6-3 10-3 14 0s8 3 14 0 10-3 14 0 6 2 8 1" fill="none" stroke="#fff6e8" stroke-width="2" stroke-linecap="round" opacity=".55"/>
   <circle cx="32" cy="32" r="30" fill="none" stroke="#fff6e8" stroke-opacity=".35" stroke-width="2"/>
 </svg>
+}
