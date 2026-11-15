@@ -18,6 +18,12 @@ const fallbackTopics = topics.filter((t) => ['fishing', 'kayaks', 'homelab'].inc
       {fallbackTopics.map((t) => <li><a href={`/videos?topic=${t.id}`}><strong>{t.label}</strong></a>: {t.blurb}</li>)}
       <li><strong>Other side quests</strong>: firearms, BBQ, gaming, pipes &amp; cigars, autonomous technologies, space and everything in between.</li>
     </ul>
+    <h2>How DQ Is Made</h2>
+    <!-- Approved by Dan Nov 15, 2026 exactly as written. -->
+    <p>Everything you see on Distracted Quest is real. Every cast, every catch, every missed hookset, every kayak launch, and every homelab build is real footage and real photos that I shot myself.</p>
+    <p>Behind the scenes, I get help from a team of AI assistants built with Grok Bot. They help me review and organize my footage, make edits, and post to the channels, so I can spend more time on the water and less time at a desk.</p>
+    <p>The only AI-generated content is the channel intro animation. Everything else is captured by me, on my own trips.</p>
+    <p>Curious how it works? You can try Grok Bot with my referral link: <a href="https://grok.com/refer/bot?code=WKYWX9PCWAME" rel="sponsored noopener" target="_blank">Try Grok Bot</a>. (Referral link: I may receive credit if you sign up. It costs you nothing.)</p>
     <h2>Follow along</h2>
     <p>{site.socials.map((s, i) => <>{i > 0 && ' · '}<a href={s.url} rel="me noopener" target="_blank">{s.label}</a></>)}</p>
   </div>
