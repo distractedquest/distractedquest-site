@@ -1,5 +1,20 @@
 [
   {
+    "id": "h4GplmEoM88",
+    "slug": "can-a-homelab-nerd-put-starlink-on-a-kayak-part-1",
+    "title": "Can a Homelab Nerd Put Starlink on a Kayak? (Part 1)",
+    "description": "I have internet in my house. I have internet in my car. So why not my kayak? 🛰️\n\nPart 1 of my Starlink-on-a-kayak side quest. I'm a homelab guy, so I treat the Starlink Mini like a server install. I unbox it, launch at Boerne City Lake, and put a USB-C watt meter on it to see what it really pulls (73.8 W at peak). Then the Anker power bank runtime test (about 3 hours), and my 12V battery plus USB outlet that should've been the backup plan. Spoiler: a 30 W USB-C port won't boot a Starlink Mini. Doh.\n\nSo does it actually work out on the water? Stick around for the first speed test at the launch.\n\nPart 2: the 12V battery on the water, and whether I can shake it offline.\n\nChapters:\n0:00 Hook\n0:18 Unboxing\n2:17 Launch Day\n6:33 Power Budget\n8:46 Battery: Anker Runtime → 12V + USB Outlet\n13:02 End of Part 1: First Speed Test at the Launch\n\nCome with me, let's follow this distracted quest. Subscribe to @distractedquest for kayak fishing, homelab nerdery, and whatever side quest comes next.",
+    "published": "2026-11-18T17:06:43+00:00",
+    "updated": "2026-11-18T17:43:39+00:00",
+    "thumbnail": "https://i1.ytimg.com/vi/h4GplmEoM88/hqdefault.jpg",
+    "isShort": false,
+    "topics": [
+      "fishing",
+      "kayaks",
+      "homelab"
+    ]
+  },
+  {
     "id": "k3mrlBvNU6U",
     "slug": "starlink-on-my-kayak-part-1-lands-wed-nov-18",
     "title": "Starlink on My Kayak? Part 1 Lands Wed Nov 18 🛰️",
