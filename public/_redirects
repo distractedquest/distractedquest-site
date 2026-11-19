@@ -5,3 +5,6 @@
 /terms-of-service.html /terms    301
 /tos                   /terms    301
 /home                  /         301
+
+# Video slug redirects (managed by youtube-pull.mjs)
+/videos/sunrise-launch-sunfish-and-a-creek-run-first-cold-front-kayak-trip-0n93ok /videos/sunrise-launch-sunfish-and-a-creek-run-first-cold-front-kayak-trip 301
