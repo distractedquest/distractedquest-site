@@ -96,7 +96,12 @@ h3 { font-size: 1.15rem; margin: 0 0 .3em; }
 .hero-art { position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; }
 .hero-art svg { width: 100%; height: 100%; }
 .hero .wrap { padding-top: clamp(64px, 14vw, 140px); padding-bottom: clamp(56px, 10vw, 110px); }
-.hero h1 { max-width: 17ch; text-shadow: 0 2px 18px rgba(0,0,0,.25); }
+.hero h1 { text-shadow: 0 2px 18px rgba(0,0,0,.25); }
+.hero .wrap { container-type: inline-size; }
+.hero-side {
+  white-space: nowrap;
+  font-size: clamp(1.1rem, 7.2cqi, 1em);
+}
 .hero p { font-size: clamp(1.05rem, 2.4vw, 1.3rem); max-width: 36ch; margin: 0 0 1.4em; opacity: .95; }
 .hero .actions { display: flex; flex-wrap: wrap; gap: 12px; }
 
@@ -153,7 +158,7 @@ section.block { padding: 8px 0 24px; }
 .strip .ph { scroll-snap-align: start; aspect-ratio: 4 / 5; border-radius: 12px; background: var(--surface-2); border: 1px dashed var(--border); display: grid; place-items: center; color: var(--muted); font-size: .9rem; text-align: center; padding: 10px; }
 
 /* Prose / legal */
-.prose { max-width: 760px; }
+.prose { max-width: 760px; container-type: inline-size; }
 .prose h1 { font-size: clamp(1.9rem, 5vw, 2.6rem); }
 .prose h2 { font-size: 1.35rem; margin-top: 1.8em; }
 .page { padding-top: 36px; padding-bottom: 56px; }
@@ -227,7 +232,6 @@ section.block { padding: 8px 0 24px; }
 .hero-logo { background: var(--brand-navy, #000b22); }
 .hero-logo .hero-banner { display: block; width: 100%; max-width: 1500px; margin: 0 auto; height: auto; aspect-ratio: 3 / 1; object-fit: cover; }
 .hero-logo .wrap { padding-top: clamp(20px, 4vw, 40px); padding-bottom: clamp(40px, 7vw, 80px); }
-.hero-logo .eyebrow { color: var(--brand-sky, #58aaed) !important; }
 
 /* Palettes (site.json palette). "sunrise" = :root defaults above. */
 :root[data-palette='quest'] {
