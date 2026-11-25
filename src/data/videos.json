@@ -1,5 +1,19 @@
 [
   {
+    "id": "jO6CTwJ-Hp0",
+    "slug": "starlink-mini-on-a-kayak-at-full-throttle-does-it-keep-up-part-2",
+    "title": "Starlink Mini on a Kayak at Full Throttle: Does It Keep Up? (Part 2)",
+    "description": "This is Part 2. In Part 1, a 30 W USB outlet couldn't boot my Starlink Mini. This time I wired it properly to a 12V, 300 Wh LiFePO4 battery and left it running on my kayak all morning: through the launch, a full-throttle run on the Minn Kota, five hours of fishing, and the ride back in.\n\nThe watt meter stayed inline the whole time: about 20 W on average, a 47.98 W peak after the full-throttle test, and the dish was still running when I hit the trailer, a bit over 6 hours after I turned it on. I forgot the action-cam SD card and didn't screen-record the speed tests, so the only speed-test screen in this video is the parked Nov 1 run (165 down / 11 up). Bass count: 6. The rock test is still on the to-do list.\n\nPart 1: https://www.youtube.com/watch?v=h4GplmEoM88\n\nChapters:\n0:00 Intro\n0:10 Hook\n0:22 Part 2: The 12V Fix\n1:34 Boot-Up on 12V\n2:00 Rung 1: On the Water\n2:49 First Fish + 8:20 AM Drain Check\n3:12 Rung 2: Full Throttle\n4:03 Side Quest + 10:30 Check-In\n5:05 BARS vs BASS\n5:19 Five Hours In + 12V Drain Results\n5:42 The One Speed Test on Screen (Nov 1)\n6:17 Scoreboard + Verdict: Space Kayak\n7:02 Next Time: Rock Test + Thanksgiving Road Trip\n\n#starlink #starlinkmini #kayakfishing #homelab #distractedquest\n\n🎣 All footage and photos in this video are real and filmed by me. The only AI-generated part is the channel intro. Editing and posting are assisted by my Grok Bot AI team.\nTry Grok Bot (referral link, I may receive credit): https://grok.com/refer/bot?code=WKYWX9PCWAME",
+    "published": "2026-11-25T16:02:44+00:00",
+    "updated": "2026-11-25T16:17:45+00:00",
+    "thumbnail": "https://i3.ytimg.com/vi/jO6CTwJ-Hp0/hqdefault.jpg",
+    "isShort": false,
+    "topics": [
+      "fishing",
+      "kayaks"
+    ]
+  },
+  {
     "id": "GhmIrOmh-JA",
     "slug": "starlink-mini-30w-usb-outlet-no-boot",
     "title": "Starlink Mini + 30W USB Outlet = No Boot 😬",
